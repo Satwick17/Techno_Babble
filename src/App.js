@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+
+import Pagination from "./componentes/Pagination";
+import Search from "./componentes/Search";
+import Stories from "./componentes/Stories";
+import "./App.css";
+import Header from "./componentes/Header";
+import Particle from "./componentes/Particle";
+import Footer from "./componentes/Footer";
+import { useGlobalhook } from "./Context";
+import { ClipLoader } from "react-spinners";
+
+
+
 
 function App() {
+  const {loading} = useGlobalhook();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   
+      
+      <>
+      <Particle/>
+      <Header/>
+      <Search/>
+      
+      { loading ? <div className="cont"><ClipLoader size= {130} color="white"/> </div>:
+        <div>
+      <Stories/>
+      <Pagination/>
+      <Footer/>
+      </div>}
+      </>
+     
+    
   );
 }
 
